@@ -8,6 +8,10 @@ frmMain=Tk()
 
 def butcallback():
 	#tkMessageBox.showinfo("Hello python", "Hello world")
+	if e5.get():
+		message=e5.get()
+	else:
+		message="Time's up!"
 	
 	t=time.time()
 	end=t+3600*int(e2.get()) + 60*int(e3.get()) + int(e4.get())
@@ -17,7 +21,7 @@ def butcallback():
 		print str(int((end-time.time())/3600)) + ":" + str(int((end-time.time())/60)) + ":" + str(int(end-time.time()))
 	
 	winsound.Beep(700,7000)
-	tkMessageBox.showinfo("Message", "Time's up!")
+	tkMessageBox.showinfo("Message", message)
 	
 	
 frmMain.title("Timer")
@@ -36,7 +40,10 @@ label4=Label(frmMain, text="Seconds:")
 label4.pack()
 e4= Entry(frmMain,bd=3)
 e4.pack()
-
+msg=Label(frmMain, text="Enter your message here(if any!)")	
+msg.pack()
+e5= Entry(frmMain,bd=5)
+e5.pack()
 B = Button(frmMain,text="Start timer!", command=butcallback)
 B.pack()
 
